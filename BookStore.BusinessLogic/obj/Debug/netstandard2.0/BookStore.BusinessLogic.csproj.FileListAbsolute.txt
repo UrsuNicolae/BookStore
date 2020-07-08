@@ -1,0 +1,5 @@
+C:\dotNetInternShip\BookStore\BookStore.BusinessLogic\bin\Debug\netstandard2.0\BookStore.BusinessLogic.deps.json
+C:\dotNetInternShip\BookStore\BookStore.BusinessLogic\bin\Debug\netstandard2.0\BookStore.BusinessLogic.dll
+C:\dotNetInternShip\BookStore\BookStore.BusinessLogic\obj\Debug\netstandard2.0\BookStore.BusinessLogic.csprojAssemblyReference.cache
+C:\dotNetInternShip\BookStore\BookStore.BusinessLogic\obj\Debug\netstandard2.0\BookStore.BusinessLogic.AssemblyInfoInputs.cache
+C:\dotNetInternShip\BookStore\BookStore.BusinessLogic\obj\Debug\netstandard2.0\BookStore.BusinessLogic.AssemblyInfo.cs

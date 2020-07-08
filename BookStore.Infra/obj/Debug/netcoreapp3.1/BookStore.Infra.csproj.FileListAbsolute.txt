@@ -1,0 +1,9 @@
+C:\dotNetInternShip\BookStore\BookStore.Infra\bin\Debug\netcoreapp3.1\BookStore.Infra.deps.json
+C:\dotNetInternShip\BookStore\BookStore.Infra\bin\Debug\netcoreapp3.1\BookStore.Infra.dll
+C:\dotNetInternShip\BookStore\BookStore.Infra\bin\Debug\netcoreapp3.1\BookStore.Infra.pdb
+C:\dotNetInternShip\BookStore\BookStore.Infra\obj\Debug\netcoreapp3.1\BookStore.Infra.csprojAssemblyReference.cache
+C:\dotNetInternShip\BookStore\BookStore.Infra\obj\Debug\netcoreapp3.1\BookStore.Infra.AssemblyInfoInputs.cache
+C:\dotNetInternShip\BookStore\BookStore.Infra\obj\Debug\netcoreapp3.1\BookStore.Infra.AssemblyInfo.cs
+C:\dotNetInternShip\BookStore\BookStore.Infra\obj\Debug\netcoreapp3.1\BookStore.Infra.dll
+C:\dotNetInternShip\BookStore\BookStore.Infra\obj\Debug\netcoreapp3.1\BookStore.Infra.pdb
+C:\dotNetInternShip\BookStore\BookStore.Infra\obj\Debug\netcoreapp3.1\BookStore.Infra.csproj.CoreCompileInputs.cache

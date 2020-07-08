@@ -1,0 +1,43 @@
+﻿@using BookStore.Data.DataModels
+@model BookStore.ViewModels.HomeVM
+
+
+<form method="get">
+    <div class="input-group pb-3">
+        <input id="searchId" class="form-control" asp-for="Search" />
+        <div class="input-group-append">
+            <button  type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
+        </div>
+    </div>
+</form>
+    
+    <div class="card-deck">
+        @foreach (var product in Model.Products)
+        {
+
+            <div class="row pb-3 backgroundWhite ml-2">
+                <div class="card mb-4">
+                    <div class="card-header overlay">
+                        <img class="img-thumbnail" src="@product.ImageUrl" style="width:200px; height:300px" >
+                    </div>
+
+                    <div class="card-body p-3 ">
+                        <h5 class="card-title font-weight-bold fuchsia-rose-text mb-0" style="text-align:center">@product.Title</h5>
+                        <p class="chili-pepper-text mb-0" style="text-align:center">@product.Author</p>
+                        <p class="chili-pepper-text mb-0" style="text-align:center"><strike>@product.ListPrice $</strike></p>
+                        <p class="chili-pepper-text mb-0" style="text-align:center">@product.Price $</p>
+                        <div style="text-align:center">
+                            <a asp-action="Details" class="btn btn-outline-info" asp-route-id="@product.Id">Deails</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        }
+        </div>
+
+    @if(Model.Products.Count() > 0)
+    {
+        <div page-model="@Model.PagingInfo" page-classes-enabled="true" page-class="btn border"
+             page-class-normal="btn btn-light" page-class-selected="btn btn-info active" class="btn-group float-right"></div>
+    }   

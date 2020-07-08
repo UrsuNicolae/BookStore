@@ -1,0 +1,5 @@
+C:\dotNetInternShip\BookStore\BookStore.Data\bin\Debug\netstandard2.0\BookStore.Data.deps.json
+C:\dotNetInternShip\BookStore\BookStore.Data\bin\Debug\netstandard2.0\BookStore.Data.dll
+C:\dotNetInternShip\BookStore\BookStore.Data\obj\Debug\netstandard2.0\BookStore.Data.csprojAssemblyReference.cache
+C:\dotNetInternShip\BookStore\BookStore.Data\obj\Debug\netstandard2.0\BookStore.Data.AssemblyInfoInputs.cache
+C:\dotNetInternShip\BookStore\BookStore.Data\obj\Debug\netstandard2.0\BookStore.Data.AssemblyInfo.cs

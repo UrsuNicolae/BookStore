@@ -1,0 +1,209 @@
+﻿@model BookStore.ViewModels.ProductVM
+
+@{
+    var title = "Create Product";
+}
+
+<form method="post" enctype="multipart/form-data">
+    <div class="col-8 row p-3 border">
+        <div asp-validation-summary="ModelOnly " class="text-danger"></div>
+        @if (Model.Product.Id != 0)
+        {
+            title = "Edit Product";
+        }
+        <div class="col-12 border-bottom">
+            <h2 class="text-dark">@title</h2>
+            <input type="hidden" asp-for="Product.Id" />
+        </div>
+        <div class="col-12 pt-4">
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Product.Title"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Product.Title" class="form-control" />
+                    <span asp-validation-for="Product.Title" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Product.ISBN"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Product.ISBN" class="form-control" />
+                    <span asp-validation-for="Product.ISBN" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Product.Author"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Product.Author" class="form-control" />
+                    <span asp-validation-for="Product.Author" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Product.Description"></label>
+                </div>
+                <div class="col-8">
+                    <textarea asp-for="Product.Description" class="form-control"></textarea>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Product.Price"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Product.Price" class="form-control" />
+                    <span asp-validation-for="Product.Price" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Product.ListPrice"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Product.ListPrice" class="form-control" />
+                    <span asp-validation-for="Product.ListPrice" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Product.stock"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Product.stock" class="form-control" />
+                    <span asp-validation-for="Product.stock" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    Category
+                </div>
+                <div class="col-6" id="categoryListId">
+                    @Html.DropDownListFor(i => i.Product.CategoryId, Model.CategoryList, "Selecte a Category",
+                   new { @class = "form-control" , id = "CategoryListId"})
+                    <span asp-validation-for="Product.CategoryId" class="text-danger"></span>
+                </div>
+                <div class="col-2">
+                    <a onclick="AppendCategory()" class="btn form-control"><i class="fas fa-plus"></i></a>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    CoverType
+                </div>
+                <div class="col-6">
+                    @Html.DropDownListFor(i => i.Product.CoverTypeId, Model.CoverTypeList, "Selecte a CoverType",
+                   new { @class = "form-control", id = "CoverTypeListId" })
+                    <span asp-validation-for="Product.CoverTypeId" class="text-danger"></span>
+                </div>
+                <div class="col-2">
+                    <a onclick="AppendCoverType()" class="btn form-control"><i class="fas fa-plus"></i></a>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    Image
+                </div>
+                <div class="col-4">
+                    <input type="file" name="files" id="uBox" multipe class="form-control" />
+                </div>
+                <div class="col-3 offset-1">
+                    <image src="@Model.Product.ImageUrl" width="100%" style="border-radius:5px; border:1px solid#bbb9b9"></image>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-8 offset-4">
+                    @if (Model.Product.Id != 0)
+                    {
+                        <partial name="_EditAndBackToList" model="Model.Product.Id" />
+                    }
+                    else
+                    {
+                        <div class="row">
+                            <div class="col">
+                                <button type="submit" onclick="return validateInput()" class="btn btn-primary form-control">Create</button>
+                            </div>
+                            <div class="col">
+                                <a asp-action="Index" class="btn btn-outline-success form-control">BackToList</a>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        function validateInput() {
+            if (document.getElementById("uBox").value == "") {
+                swal("Error", "Please select an image", "error");
+                return false;
+            }
+            return true;
+        }
+    </script>
+<script>
+    function AppendCategory() {
+        swal({
+            content: {
+            element: "input",
+            attributes: {
+                placeholder: "Category Name"
+                },
+            },
+        }).then(function (name) {
+            $.ajax({
+                type: "POST",
+                url: '/Admin/Product/Create',
+                data: {name:name},
+                success: function (obj)
+                    {
+                    if (obj.success) {
+                        $("#CategoryListId").append(new Option(obj.data.text, obj.data.value));
+                    }
+                    else {
+                        swal("Error",obj.message, "error");
+                    }
+                    }
+                })
+        })
+                
+    }
+</script>
+<script>
+    function AppendCoverType() {
+        swal({
+            content: {
+            element: "input",
+            attributes: {
+                placeholder: "Cover Type Name"
+                },
+            },
+        }).then(function (name) {
+            $.ajax({
+                type: "POST",
+                url: '/Admin/Product/CreateCoverType',
+                data: {name:name},
+                success: function (obj)
+                    {
+                    if (obj.success) {
+                        $("#CoverTypeListId").append(new Option(obj.data.text, obj.data.value));
+                    }
+                    else {
+                        swal("Error",obj.message, "error");
+                    }
+                    }
+                })
+        })
+                
+    }
+</script>
+    
+}
